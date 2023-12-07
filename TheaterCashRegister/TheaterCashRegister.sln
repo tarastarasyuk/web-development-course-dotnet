@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.DAL", "TheaterCashRegister.DAL\TheaterCashRegister.DAL.csproj", "{EAC0527A-C46D-419A-9C50-204C9C2DDEFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.BLL", "TheaterCashRegister.BLL\TheaterCashRegister.BLL.csproj", "{7FCDEEC5-6E53-49CE-9321-ACA13453FB85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.Console.PL", "TheaterCashRegister.Console.PL\TheaterCashRegister.Console.PL.csproj", "{C6356922-96CD-4B93-B3FB-8E1D1CC48995}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.BLL.Tests", "TheaterCashRegister.BLL.Tests\TheaterCashRegister.BLL.Tests.csproj", "{34FC2282-29DC-41FA-BAB2-C220B54026D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.DAL.Tests", "TheaterCashRegister.DAL.Tests\TheaterCashRegister.DAL.Tests.csproj", "{AC128564-F3B1-4F80-8FC1-5EC373C95C0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.SSR.PL", "TheaterCashRegister.SSR.PL\TheaterCashRegister.SSR.PL.csproj", "{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}"
+EndProject
+Projecdt("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.Console.PL", "TheaterCashRegister.Console.PL\TheaterCashRegister.Console.PL.csproj", "{F754EDCD-A506-47D7-A9C5-EABAB7FBAA32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAC0527A-C46D-419A-9C50-204C9C2DDEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC0527A-C46D-419A-9C50-204C9C2DDEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC0527A-C46D-419A-9C50-204C9C2DDEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC0527A-C46D-419A-9C50-204C9C2DDEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FCDEEC5-6E53-49CE-9321-ACA13453FB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FCDEEC5-6E53-49CE-9321-ACA13453FB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FCDEEC5-6E53-49CE-9321-ACA13453FB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FCDEEC5-6E53-49CE-9321-ACA13453FB85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F754EDCD-A506-47D7-A9C5-EABAB7FBAA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F754EDCD-A506-47D7-A9C5-EABAB7FBAA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F754EDCD-A506-47D7-A9C5-EABAB7FBAA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F754EDCD-A506-47D7-A9C5-EABAB7FBAA32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6356922-96CD-4B93-B3FB-8E1D1CC48995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6356922-96CD-4B93-B3FB-8E1D1CC48995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6356922-96CD-4B93-B3FB-8E1D1CC48995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6356922-96CD-4B93-B3FB-8E1D1CC48995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34FC2282-29DC-41FA-BAB2-C220B54026D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34FC2282-29DC-41FA-BAB2-C220B54026D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34FC2282-29DC-41FA-BAB2-C220B54026D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34FC2282-29DC-41FA-BAB2-C220B54026D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC128564-F3B1-4F80-8FC1-5EC373C95C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC128564-F3B1-4F80-8FC1-5EC373C95C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC128564-F3B1-4F80-8FC1-5EC373C95C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC128564-F3B1-4F80-8FC1-5EC373C95C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
