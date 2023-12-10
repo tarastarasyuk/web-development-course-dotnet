@@ -1,0 +1,52 @@
+@model List<int> 
+
+<h2>Create Ticket</h2>
+
+@using (Html.BeginForm("Create", "Ticket", FormMethod.Post))
+{
+    <label for="PerformanceId">PerformanceId:</label>
+    @Html.DropDownList("PerformanceId", (SelectList)ViewBag.Performances, "Select a Performance", new { @class = "form-control"})
+   
+    <label for="SeatNumber">SeatNumber:</label>
+    <input type="number" name="SeatNumber" class="form-control" required />
+                                          
+    <label for="Price">Price:</label>
+    <input type="number" name="Price" class="form-control" required /> 
+
+    <button type="submit" class="btn btn-success">Create</button>
+}
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        margin: auto;
+        gap: 15px;
+    }
+    label {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    input[type='number'],
+    select,
+    button {
+        padding: 5px;
+    }
+    button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    button:hover {
+        background-color: #45a049;
+        color: white;
+    }
+</style>
