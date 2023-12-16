@@ -23,10 +23,10 @@ public class TicketService : ITicketService
 
     private const string ErrorMessageNotValidPerformanceId =
         "Error! Ticket can not be assign to non-existent performance: performance id = {0}";
-    
+
     private const string ErrorMessageDuplicateSeatNumber =
         "Error! Ticket with specified seat number already exists for the performance: seat number = {0}, performance id = {1}";
-    
+
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
@@ -38,18 +38,21 @@ public class TicketService : ITicketService
 
     public TicketDto CreateTicket(TicketDto ticketDto)
     {
+        ticketDto.Status = "Available";
         var ticketPerformanceId = ticketDto.PerformanceId;
-        if (_unitOfWork.Performance.Get(p => p.Id == ticketPerformanceId) == null) 
+        if (_unitOfWork.Performance.Get(p => p.Id == ticketPerformanceId) == null)
         {
             throw new EntityNotFoundException(string.Format(ErrorMessageNotValidPerformanceId, ticketPerformanceId));
         }
 
         var ticketSeatNumber = ticketDto.SeatNumber;
-        if ( _unitOfWork.Ticket.Get(t => t.SeatNumber == ticketSeatNumber && t.PerformanceId == ticketPerformanceId) !=  null)
+        if (_unitOfWork.Ticket.Get(t => t.SeatNumber == ticketSeatNumber && t.PerformanceId == ticketPerformanceId) !=
+            null)
         {
-            throw new EntityDuplicateException(string.Format(ErrorMessageDuplicateSeatNumber, ticketSeatNumber, ticketPerformanceId));
+            throw new EntityDuplicateException(string.Format(ErrorMessageDuplicateSeatNumber, ticketSeatNumber,
+                ticketPerformanceId));
         }
-        
+
         var ticket = _mapper.Map<Ticket>(ticketDto);
         _unitOfWork.Ticket.Add(ticket);
         _unitOfWork.Save();
@@ -68,7 +71,8 @@ public class TicketService : ITicketService
 
         if (ticket.Status != TicketStatus.Available)
         {
-            throw new EntityIllegalStateException(string.Format(ErrorMessageTicketIsNotAvailable, seatNumber, performanceId));
+            throw new EntityIllegalStateException(string.Format(ErrorMessageTicketIsNotAvailable, seatNumber,
+                performanceId));
         }
 
         ticket.Status = TicketStatus.Sold;
@@ -83,7 +87,8 @@ public class TicketService : ITicketService
 
         if (ticket.Status != TicketStatus.Available)
         {
-            throw new EntityIllegalStateException(string.Format(ErrorMessageTicketIsNotAvailable, seatNumber, performanceId));
+            throw new EntityIllegalStateException(string.Format(ErrorMessageTicketIsNotAvailable, seatNumber,
+                performanceId));
         }
 
         ticket.Status = TicketStatus.Booked;

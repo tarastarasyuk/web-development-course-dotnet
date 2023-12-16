@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.DAL.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.SSR.PL", "TheaterCashRegister.SSR.PL\TheaterCashRegister.SSR.PL.csproj", "{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.API.PL", "TheaterCashRegister.API.PL\TheaterCashRegister.API.PL.csproj", "{9B87E842-6621-4910-93C9-3DE6AE0F9CD9}"
+EndProject
 Projecdt("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterCashRegister.Console.PL", "TheaterCashRegister.Console.PL\TheaterCashRegister.Console.PL.csproj", "{F754EDCD-A506-47D7-A9C5-EABAB7FBAA32}"
 EndProject
 Global
@@ -48,5 +50,9 @@ Global
 		{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDB5F656-65B5-4DB6-BF40-60EABE6A3DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B87E842-6621-4910-93C9-3DE6AE0F9CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B87E842-6621-4910-93C9-3DE6AE0F9CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B87E842-6621-4910-93C9-3DE6AE0F9CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B87E842-6621-4910-93C9-3DE6AE0F9CD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

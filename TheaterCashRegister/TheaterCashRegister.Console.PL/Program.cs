@@ -53,7 +53,7 @@ public class Program
         {
             Price = 100M,
             SeatNumber = 1,
-            Status = TicketStatus.Available,
+            Status = "Available",
             PerformanceId = addedPerformance.Id
         };
         var createdTicket1 = ticketService.CreateTicket(ticketDto1);
@@ -63,7 +63,7 @@ public class Program
         {
             Price = 100M,
             SeatNumber = 2,
-            Status = TicketStatus.Available,
+            Status = "Available",
             PerformanceId = addedPerformance.Id
         };
         var createdTicket2 = ticketService.CreateTicket(ticketDto2);

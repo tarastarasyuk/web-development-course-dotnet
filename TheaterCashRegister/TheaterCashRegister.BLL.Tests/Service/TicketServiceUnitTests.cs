@@ -56,7 +56,7 @@ public class TicketServiceUnitTests
             Id = 1,
             PerformanceId = 1,
             SeatNumber = 1,
-            Status = TicketStatus.Available,
+            Status = "Available",
         };
     }
 
