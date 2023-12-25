@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Ticket</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            margin: auto;
+            gap: 15px;
+        }
+        label {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        input[type='number'],
+        select,
+        button {
+            padding: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+        button:hover {
+            background-color: #45a049;
+            color: white;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+            <div class="container">
+                <a class="navbar-brand" href="/"><strong>TheaterCashRegister</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/create-performance.html">Performance Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/create-ticket.html">Tickets Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/list-performance.html">Search Performances</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container"> 
+        <h2>Create Ticket</h2>
+
+        <form id="addTicketForm">
+            <label for="PerformanceId">PerformanceId:</label>
+            <select id="PerformanceId" class="form-control" required></select>
+
+            <label for="SeatNumber">SeatNumber:</label>
+            <input type="number" id="SeatNumber" class="form-control" required/>
+
+            <label for="Price">Price:</label>
+            <input type="number" id="Price" class="form-control" required/> 
+
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>    
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var url = "http://localhost:5238/api/Performance";
+
+            $.getJSON(url, function(data) {
+                for(const item of data) {
+                    $('<option>', { text: item.title, value: item.id }).appendTo('#PerformanceId');
+                }
+            });
+
+            $('#addTicketForm').on('submit', function(e) {
+                e.preventDefault();
+
+                var url = "http://localhost:5238/api/Ticket";
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        'PerformanceId': $('#PerformanceId').val(),
+                        'SeatNumber': $('#SeatNumber').val(),
+                        'Price': $('#Price').val()
+                    }),
+                    success: function(result) {
+                        alert('Ticket created successfully!');
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        var errorMessage = jqXHR.responseJSON && jqXHR.responseJSON.error
+                            ? jqXHR.responseJSON.error.message
+                            : `Status Code: ${jqXHR.status}`;
+                        alert(errorMessage);
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

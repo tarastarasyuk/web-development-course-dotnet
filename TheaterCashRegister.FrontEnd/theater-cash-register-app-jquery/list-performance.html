@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of Performances</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #searchBtn {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+            <div class="container">
+                <a class="navbar-brand" href="/"><strong>TheaterCashRegister</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/create-performance.html">Performance Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/create-ticket.html">Tickets Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/list-performance.html">Search Performances</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">    
+        <h2>Search Performances</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="title" placeholder="Filter by Title">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="author" placeholder="Filter by Author">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="genre" placeholder="Filter by Genre">
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" id="date" placeholder="Filter by Date">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <button id="searchBtn" class="btn btn-primary mt-2">Search</button>
+            </div>
+        </div>
+        <table id="performances" class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table content will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var fetchPerformances = function(title, author, genre, date) {
+                $("#performances tbody").html("");
+
+                var url = "http://localhost:5238/api/Performance"; 
+                
+                var queryString = "";
+
+                if (title) queryString += "title=" + title + "&";
+                if (author) queryString += "author=" + author + "&";
+                if (genre) queryString += "genre=" + genre + "&";
+                if (date) queryString += "date=" + date + "&";
+
+                // Remove trailing '&' from queryString
+                if (queryString) {
+                    queryString = queryString.slice(0, -1);
+                    url += "?" + queryString;
+                }
+
+                $.getJSON(url, function(data) {
+                    $.each(data, function(key, item) {
+                        $("#performances tbody").append('<tr><td>' + item.title + 
+                                                        '</td><td>' + item.genre + 
+                                                        '</td><td>' + item.author + 
+                                                        '</td><td>' + new Date(item.date).toLocaleDateString() 
+                                                        + '</td><td><a href="/details-performance.html?id=' + 
+                                                        item.id + '">Details</a></td></tr>');
+                    });
+                });
+            }
+
+            fetchPerformances();
+
+            $("#searchBtn").click(function() {
+                var title = $('#title').val();
+                var author = $('#author').val();
+                var genre = $('#genre').val();
+                var date = $('#date').val();
+
+                fetchPerformances(title, author, genre, date);
+            });
+        });
+    </script>
+</body>
+</html>
