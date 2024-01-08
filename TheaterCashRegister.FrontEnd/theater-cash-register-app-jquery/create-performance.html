@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Performance</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            margin: auto;
+            gap: 15px;
+        }
+        label {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        input[type='text'],
+        input[type='date'],
+        button {
+            padding: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+        button:hover {
+            background-color: #45a049;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+            <div class="container">
+                <a class="navbar-brand" href="/"><strong>TheaterCashRegister</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/create-performance.html">Performance Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/create-ticket.html">Tickets Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/list-performance.html">Search Performances</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container"> 
+        <h2>Add New Performance</h2>
+
+        <form id="addPerformanceForm">
+            <label for="Author">Author:</label>
+            <input type="text" id="Author" name="Author" required/>
+    
+            <label for="Title">Title:</label>
+            <input type="text" id="Title" name="Title" required/>
+    
+            <label for="Genre">Genre:</label>
+            <input type="text" id="Genre" name="Genre" required/>
+    
+            <label for="Description">Description:</label>
+            <input type="text" id="Description" name="Description"/>
+    
+            <label for="Date">Date:</label>
+            <input type="date" id="Date" name="Date" required/>
+    
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>    
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#addPerformanceForm').on('submit', function(e) {
+                e.preventDefault();
+
+                var url = "http://localhost:5238/api/Performance/";
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        'Author': $('#Author').val(),
+                        'Title': $('#Title').val(),
+                        'Genre': $('#Genre').val(),
+                        'Description': $('#Description').val(),
+                        'Date': $('#Date').val()
+                    }),
+                    success: function(result) {
+                        alert('Performance created successfully!');
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                    var errorMessage = jqXHR.responseJSON && jqXHR.responseJSON.error
+                        ? jqXHR.responseJSON.error.message
+                        : `Status Code: ${jqXHR.status}`;
+                    alert(errorMessage);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

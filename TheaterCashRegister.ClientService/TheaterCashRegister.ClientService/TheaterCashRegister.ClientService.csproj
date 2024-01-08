@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+
+
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+
+
+
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+
+
+
+
+    <ItemGroup>
+      <Content Include="obj\Debug\net7.0\apphost" />
+      <Content Include="obj\Debug\net7.0\refint\TheaterCashRegister.ClientService.dll" />
+      <Content Include="obj\Debug\net7.0\ref\TheaterCashRegister.ClientService.dll" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.AssemblyInfoInputs.cache" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.assets.cache" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.csproj.AssemblyReference.cache" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.csproj.CopyComplete" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.csproj.CoreCompileInputs.cache" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.csproj.FileListAbsolute.txt" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.dll" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.GeneratedMSBuildEditorConfig.editorconfig" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.genruntimeconfig.cache" />
+      <Content Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.pdb" />
+      <Content Include="obj\project.assets.json" />
+      <Content Include="obj\project.nuget.cache" />
+      <Content Include="obj\project.packagespec.json" />
+      <Content Include="obj\rider.project.model.nuget.info" />
+      <Content Include="obj\rider.project.restore.info" />
+      <Content Include="obj\TheaterCashRegister.ClientService.csproj.nuget.dgspec.json" />
+      <Content Include="obj\TheaterCashRegister.ClientService.csproj.nuget.g.props" />
+      <Content Include="obj\TheaterCashRegister.ClientService.csproj.nuget.g.targets" />
+    </ItemGroup>
+
+
+
+
+
+    <ItemGroup>
+      <Compile Include="obj\Debug\net7.0\.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" />
+      <Compile Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.AssemblyInfo.cs" />
+      <Compile Include="obj\Debug\net7.0\TheaterCashRegister.ClientService.GlobalUsings.g.cs" />
+    </ItemGroup>
+
+
+
+
+</Project>
