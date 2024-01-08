@@ -1,0 +1,86 @@
+@model PerformanceViewModel
+
+<h2>@Model.Title</h2>
+<p>Author: @Model.Author</p>
+<p>Genre: @Model.Genre</p>
+<p>Description: @Model.Description</p>
+<p>Date: @Model.Date.ToShortDateString()</p>
+
+@using (Html.BeginForm("Delete", "Performance", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+    <input type="submit" value="Delete" class="btn btn-danger mb-4"/>
+}
+
+<h3>Tickets:</h3>
+<div class="row">
+    @foreach (var ticket in Model.Tickets.OrderBy(t => t.SeatNumber))
+    {
+        string statusClass = string.Empty;
+        switch (ticket.Status)
+        {
+            case "Available":
+                statusClass = "available-ticket";
+                break;
+            case "Booked":
+                statusClass = "booked-ticket";
+                break;
+            case "Sold":
+                statusClass = "sold-ticket";
+                break;
+        }
+        <div class="col-sm-4 d-flex flex-column mb-4">
+            <div class="card flex-column d-flex @statusClass">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title">Seat: @ticket.SeatNumber</h5>
+                    <p class="card-text">Status: @ticket.Status</p>
+                    <p class="card-text">Price: @ticket.Price</p>
+
+                    @if (ticket.Status == "Available")
+                    {
+                        @using (Html.BeginForm("Buy", "Ticket", FormMethod.Post))
+                        {
+                            @Html.Hidden("seatNumber", ticket.SeatNumber)
+                            @Html.Hidden("performanceId", Model.Id)
+                            <input type="submit" value="Buy" class="btn btn-primary mb-2 mt-2"/>
+                        }
+
+                        @using (Html.BeginForm("Book", "Ticket", FormMethod.Post))
+                        {
+                            @Html.Hidden("seatNumber", ticket.SeatNumber)
+                            @Html.Hidden("performanceId", Model.Id)
+                            <input type="submit" value="Book" class="btn btn-warning"/>
+                        }
+                    }
+                    else if (ticket.Status == "Booked")
+                    {
+                        <p>Booking Id: @ticket.Booking.UUID</p>
+                        @using (Html.BeginForm("ConfirmBookedTicket", "Ticket", FormMethod.Post))
+                        {
+                            @Html.Hidden("uuid", ticket.Booking.UUID)
+                            @Html.Hidden("performanceId", Model.Id)
+                            <input type="submit" value="Confirm Booking" class="btn btn-primary"/>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .card {
+        margin-right: 20px;
+        width: 400px;
+        height: 250px;
+    }
+    .available-ticket {
+        background-color: lightgreen;
+    }
+    .booked-ticket {
+        background-color: orange;
+    }
+    .sold-ticket {
+        background-color: rgb(128,128,128);
+    }
+</style>

@@ -1,0 +1,58 @@
+@model PerformanceCreateViewModel
+
+<h2>Add New Performance</h2>
+
+@using (Html.BeginForm("Create", "Performance", FormMethod.Post))
+{
+    <label for="Author">Author:</label>
+    <input type="text" name="Author" required/>
+
+    <label for="Title">Title:</label>
+    <input type="text" name="Title" required/>
+
+    <label for="Genre">Genre:</label>
+    <input type="text" name="Genre" required/>
+
+    <label for="Description">Description:</label>
+    <input type="text" name="Description"/>
+
+    <label for="Date">Date:</label>
+    <input type="date" name="Date" required/>
+
+    <button type="submit" class="btn btn-success">Add</button>
+}
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        margin: auto;
+        gap: 15px;
+    }
+    label {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    input[type='text'],
+    input[type='date'],
+    button {
+        padding: 5px;
+    }
+    button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    button:hover {
+        background-color: #45a049;
+        color: white;
+    }
+</style>

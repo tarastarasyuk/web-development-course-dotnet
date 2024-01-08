@@ -1,0 +1,55 @@
+@model IEnumerable<TheaterCashRegister.BLL.DTO.PerformanceDto>
+
+@{
+    ViewData["Title"] = "List of Performances";
+}
+
+<h2>Search Performances</h2>
+
+<form method="get" class="mb-3 mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="title" placeholder="Filter by Title"/>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="author" placeholder="Filter by Author"/>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="genre" placeholder="Filter by Genre"/>
+        </div>
+        <div class="col-md-3">
+            <input type="date" class="form-control" name="date" placeholder="Filter by Date"/>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered mt-4">
+    <thead>
+    <tr>
+        <th scope="col">@Html.DisplayNameFor(model => model.First().Title)</th>
+        <th scope="col">@Html.DisplayNameFor(model => model.First().Genre)</th>
+        <th scope="col">@Html.DisplayNameFor(model => model.First().Author)</th>
+        <th scope="col">@Html.DisplayNameFor(model => model.First().Date)</th>
+        <th scope="col">Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="align-middle">@item.Title</td>
+            <td class="align-middle">@item.Genre</td>
+            <td class="align-middle">@item.Author</td>
+            <td class="align-middle">@item.Date.ToShortDateString()</td>
+            <td>
+                <a href="@Url.Action("Details", "Performance", new { id = item.Id })">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
